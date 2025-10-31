@@ -1,0 +1,803 @@
+/* ---------- Base / Layout ---------- */
+:root{
+  --bg: #0f1724;            /* deep navy */
+  --card: #0b1220;          /* darker card */
+  --accent: #7c3aed;        /* purple */
+  --accent-2: #06b6d4;      /* cyan */
+  --muted: #9aa4b2;
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --success: #10b981;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(2,6,23,0.6);
+  --soft-shadow: 0 6px 20px rgba(2,6,23,0.45);
+  --gap: 12px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial;
+}
+
+html,body,#root {
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  background: linear-gradient(180deg, #071028 0%, #07172b 40%, #081827 100%);
+  color: #e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding: 28px;
+}
+
+/* App wrapper */
+.app-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Header row */
+.header-row {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+  color: #f8fbff;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  transition: transform .08s ease, box-shadow .12s ease;
+  background: transparent;
+  color: inherit;
+}
+
+button:active { transform: translateY(1px) }
+
+.btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 6px 18px rgba(124,58,237,0.18);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.btn.secondary {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  color: var(--accent-2);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+.btn.danger {
+  background: linear-gradient(90deg, #ff7a7a, var(--danger));
+  color: white;
+  box-shadow: 0 6px 18px rgba(239,68,68,0.14);
+}
+
+/* outline button used by login */
+.btn.outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #cfe3ff;
+  width: 110px;
+}
+
+/* small icon-like buttons (edit/delete) */
+.action-btn {
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-right: 6px;
+}
+.action-btn.edit {
+  background: linear-gradient(90deg, rgba(124,58,237,0.15), rgba(6,182,212,0.08));
+  color: #dfe7ff;
+  border: 1px solid rgba(124,58,237,0.08);
+}
+.action-btn.delete {
+  background: rgba(239,68,68,0.12);
+  color: #ffd6d6;
+  border: 1px solid rgba(239,68,68,0.06);
+}
+
+/* ---------- Forms & Inputs ---------- */
+input[type="text"],
+input[type="password"],
+input:not([type]),
+select, textarea,
+input[type="email"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: #eaf3ff;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+input::placeholder { color: rgba(234,243,255,0.28) }
+
+label {
+  display:block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+/* Form cards */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--soft-shadow);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Login form layout */
+.login-wrapper {
+  max-width: 420px;
+  margin: 36px auto;
+}
+
+/* ---------- Table ---------- */
+.table-wrap {
+  margin-top: 12px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  background: transparent;
+}
+
+thead th {
+  text-align: left;
+  font-size: 13px;
+  padding: 12px 14px;
+  color: #cfe6ff;
+  background: linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.03));
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  color: #e6eef6;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+/* zebra rows */
+tbody tr:nth-child(odd) td {
+  background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+
+/* no users text */
+.no-users {
+  text-align:center;
+  padding: 22px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* small helper text */
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- Modal (overlay & card) ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(2,6,23,0.7), rgba(2,6,23,0.7));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* modal card */
+.modal-card {
+  width: 100%;
+  max-width: 620px;
+  background: linear-gradient(180deg, #071022, #071220);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 20px 40px rgba(2,6,23,0.65);
+  overflow: hidden;
+}
+
+/* header */
+.modal-header {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.modal-header h3 {
+  margin:0;
+  font-size: 18px;
+}
+
+/* close */
+.modal-close {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  width: 38px; height: 38px;
+  display: inline-grid; place-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* body */
+.modal-body { padding: 18px; }
+
+/* modal form fields spacing */
+.modal-field { margin-bottom: 12px; }
+
+/* footer actions inside modal */
+.modal-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:8px; }
+
+/* ---------- Tiny utilities ---------- */
+.flex { display:flex; gap:10px; align-items:center; }
+.kv { font-size:13px; color:var(--muted) }
+.center { text-align:center }
+
+/* responsive */
+@media (max-width: 720px) {
+  .app-wrapper { padding: 16px; border-radius: 10px; }
+  input, button { font-size: 14px }
+  thead th, tbody td { padding: 10px; }
+  .modal-card { max-width: 92%; }
+}
+
+/* ---------- UserList: polished dark styling (merged) ---------- */
+
+.userlist-card {
+  padding: 22px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: var(--soft-shadow);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* header area */
+.userlist-header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.userlist-left {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.userlist-title {
+  margin: 0;
+  font-size: 20px;
+  color: #f8fbff;
+  letter-spacing: -0.2px;
+}
+.userlist-sub {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* toolbar */
+.userlist-toolbar {
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.userlist-search {
+  display:flex;
+  align-items:center;
+  background: var(--glass);
+  border-radius: 10px;
+  padding: 6px 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.userlist-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #eaf3ff;
+  width: 200px;
+  font-size: 14px;
+  padding: 6px 8px;
+}
+
+/* buttons */
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+.btn.danger {
+  background: linear-gradient(90deg, rgba(239,68,68,0.14), var(--danger));
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+/* table wrapper */
+.user-table {
+  width:100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  min-width: 720px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* header cells */
+.user-table thead th {
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #dbeeff;
+  background: linear-gradient(90deg, rgba(124,58,237,0.06), rgba(6,182,212,0.03));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  text-align:left;
+}
+
+/* body cells */
+.user-table tbody td {
+  padding: 12px 14px;
+  color: #dfeaf7;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+/* zebra + hover */
+.user-table tbody tr:nth-child(odd) td {
+  background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+}
+.user-table tbody tr:hover td {
+  background: linear-gradient(90deg, rgba(124,58,237,0.03), rgba(6,182,212,0.01));
+}
+
+/* avatar cell */
+.avatar {
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(90deg, rgba(124,58,237,0.18), rgba(6,182,212,0.08));
+  color: white;
+  font-weight: 700;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* email pill */
+.kv-pill {
+  font-size: 13px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.02);
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+/* actions */
+.row-actions { display:flex; gap:8px; justify-content:center; align-items:center; }
+.action-btn {
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+}
+.action-btn.edit {
+  background: linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.05));
+  color: #dfe7ff;
+}
+.action-btn.delete {
+  background: rgba(239,68,68,0.12);
+  color: #ffd6d6;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .userlist-search input { width: 120px; }
+  .user-table { min-width: 540px; }
+}
+@media (max-width: 520px) {
+  .userlist-title { font-size: 18px; }
+  .userlist-search input { width: 90px; }
+}
+
+/* small spinner (generic) */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.14);
+  border-top-color: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.9s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- LOGIN PAGE STYLES (merged) ---------- */
+
+/* page layout */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #0f1724 0%, #071027 100%);
+  padding: 32px;
+  color: #e6eef8;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* login card */
+.login-card {
+  width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* brand area */
+.login-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.logo {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.login-brand h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #f8fbff;
+}
+
+.login-brand .sub {
+  margin: 0;
+  font-size: 13px;
+  color: #9aa4b2;
+}
+
+/* form rows */
+.login-form .form-row {
+  margin-bottom: 12px;
+}
+
+.login-form label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #cfe3ff;
+}
+
+/* inputs (login-specific tweaks) */
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #eef6ff;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* password row (input + toggle) */
+.password-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #cfe3ff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* layout helpers inside form */
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #bcd4ff;
+}
+
+.forgot {
+  color: #9aa4b2;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+/* actions row for login */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #cfe3ff;
+  width: 110px;
+  border-radius: 8px;
+}
+
+/* disabled state */
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin-top: 12px;
+  color: #9aa4b2;
+  font-size: 13px;
+}
+
+/* login-specific spinner size (uses same keyframes) */
+.login-card .spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+/* error box */
+.error {
+  background: rgba(255, 77, 79, 0.12);
+  color: #ffb3b3;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+/* responsive tweaks for login */
+@media (max-width: 560px) {
+  .login-card { width: calc(100% - 40px); padding: 20px; border-radius: 10px; }
+  .login-page { padding: 20px; }
+}
+/* ---------- Login adjustments: equal inputs, buttons, show toggle below ---------- */
+
+/* Ensure inputs are identical width (they already are full-width by default) */
+/* Password-row now only holds the input (no inline toggle) */
+.password-row input {
+  width: 100%;
+}
+
+/* show-password-row sits below the password field */
+.show-password-row {
+  margin-top: 8px;
+}
+
+/* smaller, subtle show button (full width optional) */
+.show-toggle {
+  display: inline-block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Actions: make both buttons equal width and height */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* make all buttons inside .actions the same size */
+.actions .btn {
+  flex: 1;                /* equal widths */
+  min-height: 44px;      /* consistent height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Outline button style to match size */
+.btn.outline {
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+/* ensure primary looks slightly bolder */
+.btn.primary {
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+/* Remove space for removed forgot link */
+.row-between > div {
+  min-width: 0;
+}
+
+/* responsive tweak for very small screens */
+@media (max-width: 420px) {
+  .login-card { width: calc(100% - 32px); padding: 18px; }
+  .actions .btn { min-height: 42px; font-size: 14px; }
+  .show-toggle { width: 100%; text-align: center; }
+}
+/* ---------- Polished label and input styling ---------- */
+
+.form-row {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modern label look */
+.form-row label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+
+/* Label color highlight on focus */
+.form-row:focus-within label {
+  color: var(--accent);
+}
+
+/* Input fields polished look */
+.form-row input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--card);
+  color: #fff;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Subtle glowing border on focus */
+.form-row input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Placeholder color soft and readable */
+.form-row input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+/* Add subtle spacing between form sections */
+.password-row,
+.show-password-row {
+  margin-top: 4px;
+}
+
+/* Subtle error style */
+.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+/* ===== Make Sign in and Clear buttons identical ===== */
+
+/* Ensure action buttons share equal width & height */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Apply equal sizing to both buttons inside the actions row */
+.actions .btn {
+  flex: 1;                /* equal widths */
+  min-height: 44px;      /* consistent height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+/* Override any earlier fixed width on outline buttons */
+.btn.outline {
+  width: auto !important;
+  flex: 1 !important;
+}
+
+/* Optional: make them stack vertically on very small screens */
+@media (max-width: 420px) {
+  .actions {
+    flex-direction: column;
+  }
+  .actions .btn { width: 100%; min-height: 44px; }
+}
